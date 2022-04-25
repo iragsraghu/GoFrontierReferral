@@ -27,14 +27,14 @@ func GenerateLink(response http.ResponseWriter, request *http.Request) {
 	number := serialNumber.SerialNumber("dummy")  // Generate serial number
 	serial_number := utility.TrimString(number)   // Trim the string
 
-	// Check if the serial number is already used
+	// Getting all serial numbers from the database
 	serialNumbers, err := repo.FindAllSerialNumber()
 	if err != nil {
 		response.WriteHeader(http.StatusInternalServerError)
 		response.Write([]byte(`{"error": "Error"}`))
 		return
 	}
-
+	// checking current serial number is present in the database or not
 	if contains(serialNumbers, serial_number) {
 		response.WriteHeader(409) // data already exists
 	} else {
