@@ -1,17 +1,17 @@
 package randomNumber
 
 import (
-	"math/rand"
+	"crypto/rand"
+	"fmt"
 )
 
-func RandomString(l int) string {
-	bytes := make([]byte, l)
-	for i := 0; i < l; i++ {
-		bytes[i] = byte(randInt(48, 57))
+func RandomString() string {
+	n := 3
+	b := make([]byte, n)
+	if _, err := rand.Read(b); err != nil {
+		panic(err)
 	}
-	return string(bytes)
-}
-
-func randInt(min int, max int) int {
-	return min + rand.Intn(max-min)
+	s := fmt.Sprintf("%X", b)
+	fmt.Println(s)
+	return (s)
 }

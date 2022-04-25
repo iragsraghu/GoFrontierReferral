@@ -29,9 +29,9 @@ func GenerateLink(response http.ResponseWriter, request *http.Request) {
 	// }
 
 	rand.Seed(time.Now().UnixNano())
-	referral_code := randomNumber.RandomString(6) // Referral Code
-	number := serialNumber.SerialNumber("dummy")  // Generate serial number
-	serial_number := utility.TrimString(number)   // Trim the string
+	referral_code := randomNumber.RandomString() // Referral Code
+	number := serialNumber.SerialNumber("dummy") // Generate serial number
+	serial_number := utility.TrimString(number)  // Trim the string
 
 	referral.ReferralCode = referral_code // Assiging referral code
 	referral.SerialNumber = serial_number // Assiging serial number

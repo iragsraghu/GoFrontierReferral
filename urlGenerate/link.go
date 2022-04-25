@@ -16,7 +16,7 @@ func Link(referral_code string) {
 
 	// Query params
 	params := url.Values{}
-	params.Add("q", referral_code)
+	params.Add("", referral_code)
 	base.RawQuery = params.Encode()
 
 	fmt.Printf("%q\n", base.String())
