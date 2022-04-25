@@ -16,6 +16,7 @@ func main() {
 		fmt.Fprintln(w, "Running...")
 	})
 	router.HandleFunc("/generate", GenerateLink).Methods("POST")
+	router.HandleFunc("/listReferrals", ListReferrals).Methods("GET")
 	log.Println("Server listening on port", port)
 	log.Fatalln(http.ListenAndServe(port, router))
 }
